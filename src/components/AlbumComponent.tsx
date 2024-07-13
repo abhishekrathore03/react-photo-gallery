@@ -21,7 +21,7 @@ export const AlbumComponent: FC = () => {
     const imgData: imageData[] = useSelector((state: RootState) => state.albumData.data);
     return (
         <Wrapper>
-            <ImageComponent key={`${albumId}-image`} src={imgData[Number(albumId)].url} />
+            <ImageComponent key={`${albumId}-image`} src={imgData[Number(albumId)].url} alt={`${albumId}-image`} />
             <TextComponent key={`${albumId}-Title`}>{`Title: ${imgData[Number(albumId)].title}`}</ TextComponent>
             <TextComponent key={`${albumId}-Album`}>{`Album ID: ${imgData[Number(albumId)].albumId}`}</ TextComponent>
             <ButtonComponent key={`${albumId}-btn`}>BACK</ButtonComponent>

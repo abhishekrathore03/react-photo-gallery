@@ -12,7 +12,7 @@ const ButtonStyle = styled.button`
   border-radius: 3px;
 `;
 
-export const ButtonComponent: FC = ({ children }: PropsWithChildren) => {
+export const ButtonComponent: FC<PropsWithChildren> = ({ children }) => {
   const navigate = useNavigate();
   return <ButtonStyle onClick={() => navigate(`/`)}>{children}</ButtonStyle>;
 }
