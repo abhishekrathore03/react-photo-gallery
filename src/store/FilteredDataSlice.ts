@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { stateData } from '../interfaces/interface';
+import type { stateData } from '../interfaces';
 
 const initialState: stateData = {
     data: [],

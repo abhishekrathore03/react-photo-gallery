@@ -5,7 +5,7 @@ import type { RootState } from "../store";
 import { useParams } from "react-router-dom";
 import { TextComponent } from "./TextComponent";
 import { ImageComponent } from "./ImageComponenet";
-import { imageData } from "../interfaces/interface";
+import { imageData } from "../interfaces";
 import { ButtonComponent } from "./ButtonComponent";
 
 const Wrapper = styled.section`

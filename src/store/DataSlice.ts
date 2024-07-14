@@ -1,4 +1,4 @@
-import type { stateData } from '../interfaces/interface'
+import type { stateData } from '../interfaces'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: stateData = {

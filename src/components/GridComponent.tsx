@@ -1,12 +1,13 @@
 import { RootState } from "../store";
 import styled from "styled-components";
 import { getData } from "../communicator";
+import { imageData } from "../interfaces";
 import { FC, useEffect, useState } from "react";
-import { imageData } from "../interfaces/interface";
 import { SearchComponent } from "./SearchComponent";
 import { LoadingSpinner } from "./LoadingComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { GridItemComponent } from "./GridItemComponent";
+import { DropDownComponenet } from "./DropDownComponent";
 
 const GridStyle = styled.section`
   gap: 16px;
@@ -26,8 +27,9 @@ export const GridComponent: FC = () => {
     const imgData: imageData[] = useSelector((state: RootState) => state.filteredAlbumData.data);
     const isLoaded: Boolean = useSelector((state: RootState) => state.albumData.isLoaded);
 
-    const [totalImages, setTotalImages] = useState(0);
-    const [page, setPage] = useState(32);
+    const [currentAlbumID, setCurrentAlbumID] = useState<number>(-1);
+    const [totalImages, setTotalImages] = useState<number>(0);
+    const [page, setPage] = useState<number>(500);
 
     const handleOnScroll = () => {
         if (window.scrollY + window.innerHeight <= document.documentElement.scrollHeight) {
@@ -37,7 +39,7 @@ export const GridComponent: FC = () => {
 
     useEffect(() => {
         setTotalImages(imgData.length - 1);
-    }, [imgData])
+    }, [imgData, currentAlbumID])
 
     useEffect(() => {
         !isLoaded && getData(dispatch);
@@ -56,11 +58,9 @@ export const GridComponent: FC = () => {
     return isLoaded ? (
         <>
             <SearchComponent key={'search'} />
+            <DropDownComponenet callback={setCurrentAlbumID} albumIDs={Array.from(new Set(imgData?.map(item => item.albumId)))} />
             <GridStyle key={'Grid'}>
-                {imgData?.slice(0, page).map((val, index) => <GridItemComponent key={val.id} val={val} index={index} />)}
+                {imgData?.slice(0, page).filter(item => currentAlbumID > -1 ? item.albumId === currentAlbumID : true).map((val, index) => <GridItemComponent key={val.id} val={val} index={index} />)}
             </GridStyle>
-        </>) :
-        (
-            <LoadingSpinner key={'Loader'} />
-        );
+        </>) : <LoadingSpinner key={'Loader'} />;
 }

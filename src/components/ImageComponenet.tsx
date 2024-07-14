@@ -5,7 +5,6 @@ import styled from "styled-components";
 const ImageStyle = styled.img`
   border: none;
   color: black;
-  box-shadow: 5px 5px 10px #ccc;
   border-radius: 5px;
 `;
 
@@ -34,3 +33,5 @@ export const ThumbnailComponent: FC<{ src: string, navigatePath: string, alt: st
   }, [src]);
   return <ThumbnailStyle src={imgSrc} onClick={() => navigate(navigatePath)} alt={alt} />
 });
+
+//TODO: https://wpdean.com/css-hover-effects/

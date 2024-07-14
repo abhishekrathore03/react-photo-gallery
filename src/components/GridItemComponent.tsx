@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import styled from "styled-components";
 import { TruncatedText } from "./TextComponent";
-import { imageData } from "../interfaces/interface";
+import { imageData } from "../interfaces";
 import { ThumbnailComponent } from "./ImageComponenet";
 
 const Wrapper = styled.section`

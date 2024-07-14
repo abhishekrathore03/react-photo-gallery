@@ -1,10 +1,10 @@
 import type { FC } from "react";
 import styled from "styled-components";
-import { TextComponentProps } from "../interfaces/interface";
+import { TextComponentProps } from "../interfaces";
 
 const TextStyle = styled.p<TextComponentProps>`
   width: ${(props) => props.width};
-  font-family: 'Arial, sans-serif';
+  font-family: "Quicksand", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

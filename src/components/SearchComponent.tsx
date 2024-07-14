@@ -1,7 +1,7 @@
 import { RootState } from '../store';
 import styled from 'styled-components';
 import { FC, useEffect, useState } from 'react';
-import { imageData } from '../interfaces/interface';
+import { imageData } from '../interfaces';
 import { useDispatch, useSelector } from 'react-redux';
 import { filteredData } from '../store/FilteredDataSlice';
 
@@ -48,7 +48,7 @@ const SearchIcon = styled.div`
 `;
 
 export const SearchComponent: FC = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<string>('');
   const dispatch = useDispatch();
   const imgData: imageData[] = useSelector((state: RootState) => state.albumData.data);
 
