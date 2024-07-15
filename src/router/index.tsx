@@ -1,19 +1,25 @@
 import { NotFound } from "../components/NotFound";
 import { createBrowserRouter } from "react-router-dom"
 import { GridComponent } from "../components/GridComponent";
-import { AlbumComponent } from "../components/AlbumComponent";
+import { GridComponentSearch } from "../components/GridComponentSearch";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <GridComponent />,
     errorElement: <NotFound />,
-    children: [
-    ],
+  },
+  {
+    path: "/search",
+    element: <GridComponentSearch />,
+    errorElement: <NotFound />,
   },
   {
     path: "albums/:albumId",
-    element: <AlbumComponent />,
+    async lazy() {
+      let { AlbumComponent } = await import("../components/AlbumComponent");
+      return { Component: AlbumComponent };
+    },
   },
   {
     action: NotFound,

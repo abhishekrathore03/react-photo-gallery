@@ -1,15 +1,16 @@
 import { FC } from "react";
 import styled from "styled-components";
+import { GRID_GAP } from "../constants";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store";
+import { imageData } from "../interfaces";
 import { useParams } from "react-router-dom";
 import { TextComponent } from "./TextComponent";
 import { ImageComponent } from "./ImageComponenet";
-import { imageData } from "../interfaces";
 import { ButtonComponent } from "./ButtonComponent";
 
 const Wrapper = styled.section`
-    margin: 16px;
+    margin: ${GRID_GAP}px;
     display: flex;
     flex-direction: column;
     justify-content: center;

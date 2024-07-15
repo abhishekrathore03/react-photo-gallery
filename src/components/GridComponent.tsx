@@ -2,12 +2,14 @@ import { RootState } from "../store";
 import styled from "styled-components";
 import { getData } from "../communicator";
 import { imageData } from "../interfaces";
-import { FC, useEffect, useState } from "react";
+import { useImagesPerPage } from "../utils";
 import { SearchComponent } from "./SearchComponent";
 import { LoadingSpinner } from "./LoadingComponent";
+import { FC, memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GridItemComponent } from "./GridItemComponent";
 import { DropDownComponenet } from "./DropDownComponent";
+import { PaginationComponent } from "./PaginationComponent";
 
 const GridStyle = styled.section`
   gap: 16px;
@@ -19,48 +21,34 @@ const GridStyle = styled.section`
   background: ${props => props.theme.bg};
 `;
 
-const EVENT_TYPE: string = "scroll";
-const GRID_ITEMS_PER_Page: number = 8;
-
-export const GridComponent: FC = () => {
-    const dispatch = useDispatch();
+const Grid = () => {
+    const imagesPerPage = useImagesPerPage();
     const imgData: imageData[] = useSelector((state: RootState) => state.filteredAlbumData.data);
-    const isLoaded: Boolean = useSelector((state: RootState) => state.albumData.isLoaded);
 
-    const [currentAlbumID, setCurrentAlbumID] = useState<number>(-1);
-    const [totalImages, setTotalImages] = useState<number>(0);
-    const [page, setPage] = useState<number>(500);
+    const [currentAlbumID, setCurrentAlbumID] = useState<number>(-1); // For DropDown
+    const [page, setPage] = useState<{ start: number, end: number }>({ start: 0, end: imagesPerPage });
 
-    const handleOnScroll = () => {
-        if (window.scrollY + window.innerHeight <= document.documentElement.scrollHeight) {
-            setPage((prev) => prev + GRID_ITEMS_PER_Page);
-        }
-    };
+    const arrImages = imgData?.filter(item => currentAlbumID > -1 ? item.albumId === currentAlbumID : true);
 
-    useEffect(() => {
-        setTotalImages(imgData.length - 1);
-    }, [imgData, currentAlbumID])
+    useEffect(() => { }, [imgData, currentAlbumID, imagesPerPage]);
 
-    useEffect(() => {
-        !isLoaded && getData(dispatch);
-    }, [dispatch, isLoaded]);
-
-    useEffect(() => {
-        page < totalImages && totalImages > 0
-            ? window.addEventListener(EVENT_TYPE, handleOnScroll)
-            : window.removeEventListener(EVENT_TYPE, handleOnScroll);
-
-        return () => {
-            window.removeEventListener(EVENT_TYPE, handleOnScroll);
-        };
-    }, [page, totalImages]);
-
-    return isLoaded ? (
+    return (
         <>
             <SearchComponent key={'search'} />
             <DropDownComponenet callback={setCurrentAlbumID} albumIDs={Array.from(new Set(imgData?.map(item => item.albumId)))} />
             <GridStyle key={'Grid'}>
-                {imgData?.slice(0, page).filter(item => currentAlbumID > -1 ? item.albumId === currentAlbumID : true).map((val, index) => <GridItemComponent key={val.id} val={val} index={index} />)}
+                {arrImages?.slice(page.start, page.end).map((val, index) => <GridItemComponent key={val.id} val={val} index={index} />)}
             </GridStyle>
-        </>) : <LoadingSpinner key={'Loader'} />;
+            <PaginationComponent totalImages={arrImages?.length} imagesPerPage={imagesPerPage} currentPage={setPage} />
+        </>
+    );
 }
+
+export const GridComponent: FC = memo(() => {
+    const dispatch = useDispatch();
+    const isLoaded: Boolean = useSelector((state: RootState) => state.albumData.isLoaded);
+
+    getData(dispatch); //Retrive the data
+
+    return isLoaded ? <Grid /> : <LoadingSpinner key={'Loader'} />;
+});
