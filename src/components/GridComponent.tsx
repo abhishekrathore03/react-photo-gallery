@@ -19,7 +19,7 @@ const GridStyle = styled.section`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  background: ${props => props.theme.bg};
+//   background: ${props => props.theme.bg};
 `;
 
 const Grid = () => {

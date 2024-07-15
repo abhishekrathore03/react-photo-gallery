@@ -3,88 +3,54 @@ import { useNavigate } from "react-router-dom";
 import { FC, memo, MouseEvent, PropsWithChildren } from "react";
 
 const ButtonStyle = styled.button`
-  background: white;
+  margin: 16px;
   color: #BF4F74;
   font-size: 1em;
-  margin: 16px;
   padding: 4px 16px;
-  border: 2px solid #BF4F74;
+  background: white;
   border-radius: 3px;
+  border: 2px solid #BF4F74;
+  // background-image: conic-gradient(from 180deg at 50% 50%, #3fdcf7 0deg, #1890ff 51.43deg, #6813cb 102.86deg, #ff003d 154.29deg, #ff8a00 205.71deg, #ffd600 257.14deg, #67be23 308.57deg, #3fdcf7 1turn);
 `;
 
 const PillStyle = styled(ButtonStyle)`
-    padding: 0 12px;
-    height: 32px;
-    text-align: center;
-    margin: auto 4px;
-    color: rgba(0, 0, 0, 0.87);
-    display: flex;
-    box-sizing: border-box;
-    align-items: center;
-    letter-spacing: 0.01071em;
-    border-radius: 16px;
-    line-height: 1.43;
-    font-size: 13px;
-    min-width: 32px;
+  border: 0px;
+  outline: 0px;
+  height: 32px;
+  cursor: pointer;
+  min-width: 32px;
+  margin: 0px 3px;
+  padding: 0px 6px;
+  text-align: center;
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.04);
-      cursor: pointer;
-    }
-
-    &.dots:hover {
-      background-color: transparent;
-      cursor: default;
-    }
-
-    &.selected {
-      background-color: rgba(0, 0, 0, 0.08);
-    }
-
-    &.disabled {
-      pointer-events: none;
-      &:hover {
-        background-color: transparent;
-        cursor: default;
-      }
-    }
+  &.dots:hover {
+    cursor: default;
+    background-color: transparent;
   }
-`;
 
-const ArrowStyle = styled(PillStyle)`
-    &::before {
-      position: relative;
-      /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
-      content: '';
-      /* By using an em scale, the arrows will size with the font */
-      display: inline-block;
-      width: 0.4em;
-      height: 0.4em;
-      border-right: 0.12em solid rgba(0, 0, 0, 0.87);
-      border-top: 0.12em solid rgba(0, 0, 0, 0.87);
-    }
+  &.selected {
+    background-color: rgba(255, 255, 255, 0.16);
+  }
+  
+  &.disabled {
+    opacity: 0.38;
+    cursor: default;
+  }
+  
+  &.disabled:hover {
+    opacity: 0.38;
+    cursor: default;
+    background-color: transparent;
+  }
 
-    &.left {
-      transform: rotate(225deg);
-    }
-
-    &.right {
-      transform: rotate(45deg);
-    }
-
-    &.disabled {
-      pointer-events: none;
-
-      .arrow::before {
-        border-right: 0.12em solid rgba(0, 0, 0, 0.43);
-        border-top: 0.12em solid rgba(0, 0, 0, 0.43);
-      }
-
-      &:hover {
-        background-color: transparent;
-        cursor: default;
-      }
-    }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
 `;
 
 export const ButtonComponent: FC<PropsWithChildren> = ({ children }) => {
@@ -94,8 +60,4 @@ export const ButtonComponent: FC<PropsWithChildren> = ({ children }) => {
 
 export const PillComponent: FC<{ className: string, value: number | string, onClick: (e: MouseEvent<HTMLButtonElement>) => void }> = memo(({ className, value, onClick }) => {
   return <PillStyle title={String(value)} className={className} onClick={onClick} id={String(value)}>{value}</PillStyle>
-})
-
-export const ArrowButton: FC<{ className: string, id: string, onClick: (e: MouseEvent<HTMLButtonElement>) => void }> = memo(({ className, onClick, id }) => {
-  return <ArrowStyle title={id} className={className} onClick={onClick} id={id} />
 })

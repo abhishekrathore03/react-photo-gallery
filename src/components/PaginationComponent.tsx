@@ -1,8 +1,8 @@
+import { DOTS } from "../constants";
 import styled from "styled-components"
 import { usePagination } from "../utils";
-import { ArrowButton, PillComponent } from "./ButtonComponent";
+import { PillComponent } from "./ButtonComponent";
 import { Dispatch, FC, memo, MouseEvent, SetStateAction, useEffect, useState } from "react";
-import { DOTS } from "../constants";
 
 const Wrapper = styled.section`
     justify-content: center;
@@ -16,7 +16,9 @@ export const PaginationComponent: FC<{ totalImages: number, imagesPerPage: numbe
     const paginationRange = usePagination(totalImages, imagesPerPage, 1, selectedPage);
 
     const clickHandeller = (e: MouseEvent<HTMLButtonElement>) => {
-        e.currentTarget.id === "left" ? setSelectedPage(selectedPage - 1) : e.currentTarget.id === "right" ? setSelectedPage(selectedPage + 1) : setSelectedPage(parseInt(e.currentTarget.id));
+        if (e.currentTarget.id !== "...") {
+            e.currentTarget.id === "<" ? setSelectedPage(selectedPage - 1) : e.currentTarget.id === ">" ? setSelectedPage(selectedPage + 1) : setSelectedPage(parseInt(e.currentTarget.id));
+        }
     }
     useEffect(() => {
         currentPage({
@@ -27,9 +29,9 @@ export const PaginationComponent: FC<{ totalImages: number, imagesPerPage: numbe
 
     return (
         <Wrapper key={'Wrapper'}>
-            <ArrowButton key="left-arrow" className={selectedPage === 1 ? "left disabled" : "left"} onClick={clickHandeller} id="left" />
-            {paginationRange?.map((pageValue) => <PillComponent key={`pill - ${(pageValue as number) + Math.random()} `} className={selectedPage === pageValue ? "selected" : pageValue === DOTS ? "dots" : ""} value={pageValue} onClick={clickHandeller} />)}
-            <ArrowButton key="right-arrow" className="right" onClick={clickHandeller} id="right" />
+            <PillComponent key="left-arrow" className={selectedPage === 1 ? "disabled" : ""} onClick={clickHandeller} value="<" />
+            {paginationRange?.map((pageValue) => <PillComponent key={`pill - ${(pageValue as number) + Math.random()} `} className={selectedPage === pageValue ? "selected" : pageValue === DOTS ? "dots" : "normal"} value={pageValue} onClick={clickHandeller} />)}
+            <PillComponent key="right-arrow" className={paginationRange && selectedPage === paginationRange[paginationRange?.length - 1] ? "disabled" : ""} onClick={clickHandeller} value=">" />
         </Wrapper>
     )
 })

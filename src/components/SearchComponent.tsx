@@ -71,7 +71,7 @@ export const SearchComponent: FC = () => {
           <path d="M23.707 22.293l-6.519-6.519a9.456 9.456 0 002.227-6.042C19.415 4.66 15.755 1 11.208 1S3 4.66 3 9.207s3.66 8.207 8.207 8.207c2.275 0 4.357-.878 5.919-2.32l6.519 6.519a1 1 0 001.414-1.414zM5 9.207C5 5.99 7.991 3 11.208 3c3.216 0 5.207 2.991 5.207 6.207S14.424 15.414 11.208 15.414C7.991 15.414 5 12.424 5 9.207z" />
         </svg>
       </SearchIcon>
-      <SearchInput type="search" placeholder="Search for a title..." value={query} onChange={(e) => setQuery(e.target.value)} />
+      <SearchInput type="search" placeholder="Search by Title..." value={query} onChange={(e) => setQuery(e.target.value)} />
     </SearchBoxContainer>
   );
 };

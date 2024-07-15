@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Dispatch, FC, memo, SetStateAction } from "react";
 
 const SelectComponent = styled.select`
+    color: white;
     float: right;
     padding: 10px;
     max-width: 200px;

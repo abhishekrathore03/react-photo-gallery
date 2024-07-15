@@ -8,7 +8,7 @@ const TextStyle = styled.p<TextComponentProps>`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 6px 0 0;
+  margin: 12px 0 0;
   font-size: 16px;
   color: #ffffff;
 `;
