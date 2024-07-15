@@ -1,5 +1,5 @@
 export const GRID_GAP = 16;
-export const GRID_MARGINE = 80;
+export const GRID_MARGINE = 76;
 export const THUMB_WIDTH = 150;
 export const THUMB_HEIGHT = 150;
 

@@ -2,10 +2,13 @@ import styled from "styled-components"
 import { usePagination } from "../utils";
 import { ArrowButton, PillComponent } from "./ButtonComponent";
 import { Dispatch, FC, memo, MouseEvent, SetStateAction, useEffect, useState } from "react";
+import { DOTS } from "../constants";
 
 const Wrapper = styled.section`
+    justify-content: center;
+    align-items: center;
     display: flex;
-    list-style-type: none;
+    padding: 8px;
 `;
 
 export const PaginationComponent: FC<{ totalImages: number, imagesPerPage: number, currentPage: Dispatch<SetStateAction<{ start: number; end: number; }>> }> = memo(({ totalImages, imagesPerPage, currentPage }) => {
@@ -20,13 +23,12 @@ export const PaginationComponent: FC<{ totalImages: number, imagesPerPage: numbe
             start: imagesPerPage * (selectedPage - 1),
             end: imagesPerPage * selectedPage,
         });
-        console.log(paginationRange);
-    }, [imagesPerPage, selectedPage, paginationRange])
+    }, [imagesPerPage, selectedPage, paginationRange, currentPage])
 
     return (
         <Wrapper key={'Wrapper'}>
             <ArrowButton key="left-arrow" className={selectedPage === 1 ? "left disabled" : "left"} onClick={clickHandeller} id="left" />
-            {paginationRange?.map((pageValue) => <PillComponent key={`pill-${(pageValue as number) + Math.random()}`} className={selectedPage === pageValue ? "selected" : ""} value={pageValue} onClick={clickHandeller} />)}
+            {paginationRange?.map((pageValue) => <PillComponent key={`pill - ${(pageValue as number) + Math.random()} `} className={selectedPage === pageValue ? "selected" : pageValue === DOTS ? "dots" : ""} value={pageValue} onClick={clickHandeller} />)}
             <ArrowButton key="right-arrow" className="right" onClick={clickHandeller} id="right" />
         </Wrapper>
     )

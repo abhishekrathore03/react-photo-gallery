@@ -32,18 +32,17 @@ const PillStyle = styled(ButtonStyle)`
       cursor: pointer;
     }
 
+    &.dots:hover {
+      background-color: transparent;
+      cursor: default;
+    }
+
     &.selected {
       background-color: rgba(0, 0, 0, 0.08);
     }
 
     &.disabled {
       pointer-events: none;
-
-      .arrow::before {
-        border-right: 0.12em solid rgba(0, 0, 0, 0.43);
-        border-top: 0.12em solid rgba(0, 0, 0, 0.43);
-      }
-
       &:hover {
         background-color: transparent;
         cursor: default;
@@ -66,7 +65,7 @@ const ArrowStyle = styled(PillStyle)`
     }
 
     &.left {
-      transform: rotate(-135deg) translate(-50%);
+      transform: rotate(225deg);
     }
 
     &.right {
@@ -90,13 +89,13 @@ const ArrowStyle = styled(PillStyle)`
 
 export const ButtonComponent: FC<PropsWithChildren> = ({ children }) => {
   const navigate = useNavigate();
-  return <ButtonStyle onClick={() => navigate(`/`)}>{children}</ButtonStyle>;
+  return <ButtonStyle title={"back"} onClick={() => navigate(`/`)}>{children}</ButtonStyle>;
 }
 
 export const PillComponent: FC<{ className: string, value: number | string, onClick: (e: MouseEvent<HTMLButtonElement>) => void }> = memo(({ className, value, onClick }) => {
-  return <PillStyle className={className} onClick={onClick} id={String(value)}>{value}</PillStyle>
+  return <PillStyle title={String(value)} className={className} onClick={onClick} id={String(value)}>{value}</PillStyle>
 })
 
 export const ArrowButton: FC<{ className: string, id: string, onClick: (e: MouseEvent<HTMLButtonElement>) => void }> = memo(({ className, onClick, id }) => {
-  return <ArrowStyle className={className} onClick={onClick} id={id} />
+  return <ArrowStyle title={id} className={className} onClick={onClick} id={id} />
 })

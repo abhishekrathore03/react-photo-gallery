@@ -3,12 +3,9 @@ import { Dispatch, FC, memo, SetStateAction } from "react";
 
 const SelectComponent = styled.select`
     float: right;
-    width: 100%;
     padding: 10px;
-    display: flex;
     max-width: 200px;
     border-radius: 5px;
-    align-items: center;
     background-color: #333;
 `;
 const OptionComponent = styled.option``;
