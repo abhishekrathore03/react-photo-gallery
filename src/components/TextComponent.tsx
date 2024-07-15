@@ -3,14 +3,15 @@ import styled from "styled-components";
 import { TextComponentProps } from "../interfaces";
 
 const TextStyle = styled.p<TextComponentProps>`
+  color: #ffffff;
+  font-size: 16px;
+  margin: 12px 0 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   width: ${(props) => props.width};
   font-family: "Quicksand", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  margin: 12px 0 0;
-  font-size: 16px;
-  color: #ffffff;
 `;
 
 // Extend the styled-component

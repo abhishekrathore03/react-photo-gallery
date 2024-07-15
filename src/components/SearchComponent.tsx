@@ -1,7 +1,7 @@
 import { RootState } from '../store';
 import styled from 'styled-components';
-import { FC, useEffect, useState } from 'react';
 import { imageData } from '../interfaces';
+import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filteredData } from '../store/FilteredDataSlice';
 

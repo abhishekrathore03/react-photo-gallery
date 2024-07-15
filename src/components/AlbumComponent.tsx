@@ -10,11 +10,11 @@ import { ImageComponent } from "./ImageComponenet";
 import { ButtonComponent } from "./ButtonComponent";
 
 const Wrapper = styled.section`
-    margin: ${GRID_GAP}px;
     display: flex;
+    align-items: center;
+    margin: ${GRID_GAP}px;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 `;
 
 export const AlbumComponent: FC = () => {

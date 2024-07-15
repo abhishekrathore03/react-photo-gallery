@@ -3,13 +3,12 @@ import styled from "styled-components";
 import { getData } from "../communicator";
 import { imageData } from "../interfaces";
 import { useImagesPerPage } from "../utils";
-import { SearchComponent } from "./SearchComponent";
 import { LoadingSpinner } from "./LoadingComponent";
+import { FilterComponent } from "./FilterComponenet";
 import { GRID_GAP, GRID_MARGINE } from "../constants";
 import { FC, memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GridItemComponent } from "./GridItemComponent";
-import { DropDownComponenet } from "./DropDownComponent";
 import { PaginationComponent } from "./PaginationComponent";
 
 const GridStyle = styled.section`
@@ -35,8 +34,7 @@ const Grid = () => {
 
     return (
         <>
-            <SearchComponent key={'search'} />
-            <DropDownComponenet callback={setCurrentAlbumID} albumIDs={Array.from(new Set(imgData?.map(item => item.albumId)))} />
+            <FilterComponent callback={setCurrentAlbumID} albumIDs={Array.from(new Set(imgData?.map(item => item.albumId)))} />
             <GridStyle key={'Grid'}>
                 {arrImages?.slice(page.start, page.end).map((val, index) => <GridItemComponent key={val.id} val={val} index={index} />)}
             </GridStyle>

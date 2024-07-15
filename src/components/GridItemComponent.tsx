@@ -1,15 +1,16 @@
 import { FC, memo } from "react";
 import styled from "styled-components";
-import { TruncatedText } from "./TextComponent";
 import { imageData } from "../interfaces";
+import { THUMB_WIDTH } from "../constants";
+import { TruncatedText } from "./TextComponent";
 import { ThumbnailComponent } from "./ImageComponenet";
 
 const Wrapper = styled.section`
-    width: 150px;
+    width: ${THUMB_WIDTH}px;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 `;
 
 export const GridItemComponent: FC<{ val: imageData, index: number }> = memo(({ val, index }) => {

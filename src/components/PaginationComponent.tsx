@@ -5,10 +5,15 @@ import { PillComponent } from "./ButtonComponent";
 import { Dispatch, FC, memo, MouseEvent, SetStateAction, useEffect, useState } from "react";
 
 const Wrapper = styled.section`
-    justify-content: center;
-    align-items: center;
+    width: 100%;
     display: flex;
     padding: 8px;
+    max-width: 350px;
+    margin: 10px auto;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #333;
+    justify-content: center;
 `;
 
 export const PaginationComponent: FC<{ totalImages: number, imagesPerPage: number, currentPage: Dispatch<SetStateAction<{ start: number; end: number; }>> }> = memo(({ totalImages, imagesPerPage, currentPage }) => {
@@ -16,8 +21,9 @@ export const PaginationComponent: FC<{ totalImages: number, imagesPerPage: numbe
     const paginationRange = usePagination(totalImages, imagesPerPage, 1, selectedPage);
 
     const clickHandeller = (e: MouseEvent<HTMLButtonElement>) => {
+        const maxPage = paginationRange && paginationRange[paginationRange?.length - 1];
         if (e.currentTarget.id !== "...") {
-            e.currentTarget.id === "<" ? setSelectedPage(selectedPage - 1) : e.currentTarget.id === ">" ? setSelectedPage(selectedPage + 1) : setSelectedPage(parseInt(e.currentTarget.id));
+            e.currentTarget.id === "<" ? setSelectedPage(selectedPage === 1 ? 1 : selectedPage - 1) : e.currentTarget.id === ">" ? setSelectedPage(selectedPage === maxPage ? selectedPage : selectedPage + 1) : setSelectedPage(parseInt(e.currentTarget.id));
         }
     }
     useEffect(() => {

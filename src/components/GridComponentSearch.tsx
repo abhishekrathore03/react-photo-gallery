@@ -5,10 +5,10 @@ import { imageData } from "../interfaces";
 import { FC, useEffect, useState } from "react";
 import { SearchComponent } from "./SearchComponent";
 import { LoadingSpinner } from "./LoadingComponent";
+import { GRID_GAP, GRID_MARGINE } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { GridItemComponent } from "./GridItemComponent";
 import { DropDownComponenet } from "./DropDownComponent";
-import { GRID_GAP, GRID_MARGINE } from "../constants";
 
 const GridStyle = styled.section`
   gap: ${GRID_GAP}px;
