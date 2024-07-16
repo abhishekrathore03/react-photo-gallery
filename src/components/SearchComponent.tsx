@@ -7,44 +7,37 @@ import { filteredData } from '../store/FilteredDataSlice';
 
 // Container for the search box
 const SearchBoxContainer = styled.div`
-  width: 100%;
-  padding: 10px;
+  width: 350px;
+  padding: 3px;
   display: flex;
-  margin: 0 auto;
-  max-width: 400px;
-  border-radius: 5px;
-  align-items: center;
-  background-color: #333;
+  background: #333;
+  border-radius:100px;
+  justify-content:center;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+  }
 `;
 
 // Styled input for the search box
 const SearchInput = styled.input`
-  flex: 1;
-  color: #fff;
+  flex:1;
+  width:100%;
+  color:white;
   border: none;
   outline: none;
   padding: 10px;
   font-size: 16px;
-  border-radius: 5px;
-  background-color: #555;
-
+  background: transparent;
   &::placeholder {
-    color: #ccc;
+    color:#CCC;
+    text-align:center;
   }
 `;
 
-// Search icon wrapper
-const SearchIcon = styled.div`
-  display: flex;
-  color: #ff6600;
-  margin-right: 10px;
-  align-items: center;
-  
-  svg {
-    fill: #ff6600;
-    width: 20px;
-    height: 20px;
-  }
+const SearchSVG = styled.svg`
+  width: 7%;
+  padding-left: 5px;
 `;
 
 export const SearchComponent: FC = () => {
@@ -66,11 +59,9 @@ export const SearchComponent: FC = () => {
 
   return (
     <SearchBoxContainer>
-      <SearchIcon>
-        <svg viewBox="0 0 24 24">
-          <path d="M23.707 22.293l-6.519-6.519a9.456 9.456 0 002.227-6.042C19.415 4.66 15.755 1 11.208 1S3 4.66 3 9.207s3.66 8.207 8.207 8.207c2.275 0 4.357-.878 5.919-2.32l6.519 6.519a1 1 0 001.414-1.414zM5 9.207C5 5.99 7.991 3 11.208 3c3.216 0 5.207 2.991 5.207 6.207S14.424 15.414 11.208 15.414C7.991 15.414 5 12.424 5 9.207z" />
-        </svg>
-      </SearchIcon>
+      <SearchSVG viewBox="0 0 48 48">
+        <path fill="#199be2" d="M35.983,32.448l-3.536,3.536l7.87,7.87c0.195,0.195,0.512,0.195,0.707,0l2.828-2.828	c0.195-0.195,0.195-0.512,0-0.707L35.983,32.448z"></path><radialGradient id="KGt2acGa95QyN2j07oBX6a_KPmthqkeTgDN_gr1" cx="20.024" cy="20.096" r="19.604" gradientUnits="userSpaceOnUse"><stop offset=".693" stopColor="#006185"></stop><stop offset=".921" stopColor="#35c1f1"></stop></radialGradient><polygon fill="url(#KGt2acGa95QyN2j07oBX6a_KPmthqkeTgDN_gr1)" points="31.601,28.065 28.065,31.601 32.448,35.983 35.983,32.448"></polygon><linearGradient id="KGt2acGa95QyN2j07oBX6b_KPmthqkeTgDN_gr2" x1="8.911" x2="31.339" y1="8.911" y2="31.339" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#a3ffff"></stop><stop offset=".223" stopColor="#9dfbff"></stop><stop offset=".53" stopColor="#8bf1ff"></stop><stop offset=".885" stopColor="#6ee0ff"></stop><stop offset="1" stopColor="#63daff"></stop></linearGradient><circle cx="20" cy="20" r="16" fill="url(#KGt2acGa95QyN2j07oBX6b_KPmthqkeTgDN_gr2)"></circle>
+      </SearchSVG>
       <SearchInput type="search" placeholder="Search by Title..." value={query} onChange={(e) => setQuery(e.target.value)} />
     </SearchBoxContainer>
   );

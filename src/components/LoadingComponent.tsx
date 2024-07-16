@@ -1,2 +1,20 @@
-//TODO: Loader should be center
-export const LoadingSpinner = () => <img src="Spinner.svg" alt="Loading ..." />;
+import styled from "styled-components";
+
+const Wrapper = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+const LoadingImage = styled.img``;
+
+//TODO: Loader should be centered
+export const LoadingSpinner = () => {
+    return (
+        <Wrapper>
+            <LoadingImage src="Spinner.svg" alt="Loading ..." />
+        </Wrapper>
+    )
+};

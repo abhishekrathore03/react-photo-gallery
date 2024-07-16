@@ -41,5 +41,4 @@ export const ThumbnailComponent: FC<{ src: string, navigatePath: string, alt: st
   }, [src]);
   return <ThumbnailStyle src={imgSrc} onClick={() => navigate(navigatePath)} alt={alt} />
 });
-
 //TODO: https://wpdean.com/css-hover-effects/

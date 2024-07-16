@@ -21,7 +21,7 @@ const GridStyle = styled.section`
 //   background: ${props => props.theme.bg};
 `;
 
-const Grid = () => {
+const Grid: FC = () => {
     const imagesPerPage = useImagesPerPage();
     const imgData: imageData[] = useSelector((state: RootState) => state.filteredAlbumData.data);
 

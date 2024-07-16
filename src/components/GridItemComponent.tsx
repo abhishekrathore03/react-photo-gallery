@@ -6,10 +6,10 @@ import { TruncatedText } from "./TextComponent";
 import { ThumbnailComponent } from "./ImageComponenet";
 
 const Wrapper = styled.section`
-    width: ${THUMB_WIDTH}px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: ${THUMB_WIDTH}px;
     justify-content: center;
 `;
 

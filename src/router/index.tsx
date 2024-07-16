@@ -1,7 +1,7 @@
 import { NotFound } from "../components/NotFound";
 import { createBrowserRouter } from "react-router-dom"
 import { GridComponent } from "../components/GridComponent";
-import { GridComponentSearch } from "../components/GridComponentSearch";
+import { GridComponentScroll } from "../components/GridComponentScroll";
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/search",
-    element: <GridComponentSearch />,
+    element: <GridComponentScroll />,
     errorElement: <NotFound />,
   },
   {
