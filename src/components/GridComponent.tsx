@@ -5,20 +5,19 @@ import { imageData } from "../interfaces";
 import { useImagesPerPage } from "../utils";
 import { LoadingSpinner } from "./LoadingComponent";
 import { FilterComponent } from "./FilterComponenet";
-import { GRID_GAP, GRID_MARGINE } from "../constants";
 import { FC, memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GridItemComponent } from "./GridItemComponent";
 import { PaginationComponent } from "./PaginationComponent";
+import { GRID_GAP, GRID_MARGINE_LEFT_RIGHT, GRID_MARGINE_TOP_BOTTOM } from "../constants";
 
 const GridStyle = styled.section`
-  gap: ${GRID_GAP}px;
-  margin: ${GRID_MARGINE}px ${GRID_MARGINE}px auto ${GRID_MARGINE}px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-//   background: ${props => props.theme.bg};
+    gap: ${GRID_GAP}px;
+    margin: ${GRID_MARGINE_TOP_BOTTOM}px ${GRID_MARGINE_LEFT_RIGHT}px ${GRID_MARGINE_TOP_BOTTOM}px ${GRID_MARGINE_LEFT_RIGHT}px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 `;
 
 const Grid: FC = () => {

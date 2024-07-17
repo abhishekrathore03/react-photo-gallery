@@ -3,8 +3,10 @@ import { PropsWithChildren } from "react";
 
 const StyledDiv = styled.main`
     width: 100%;
-    align-self: center;
+    display: flex;
+    min-height: 100vh;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
     background-color: ${props => props.theme.bg};
 `;

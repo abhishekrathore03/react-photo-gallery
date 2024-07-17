@@ -4,17 +4,23 @@ import { DropDownComponenet } from "./DropDownComponent";
 import { Dispatch, FC, memo, SetStateAction } from "react";
 
 const Wrapper = styled.section`
+    gap: 50px;
+    width: 100%;
+    margin: auto;
     display: flex;
-    margin-top:30px;
-    align-items:center;
-    justify-content:center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
 `;
 
 export const FilterComponent: FC<{ albumIDs: number[], callback: Dispatch<SetStateAction<number>> }> = memo(({ albumIDs, callback }) => {
     return (
         <Wrapper>
-            <SearchComponent key={'search'} />
             <DropDownComponenet albumIDs={albumIDs} callback={callback} />
+            <SearchComponent key={'search'} />
         </Wrapper>
     );
 });

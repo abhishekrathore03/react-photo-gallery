@@ -5,7 +5,7 @@ import { imageData } from "../interfaces";
 import { FC, useEffect, useState } from "react";
 import { LoadingSpinner } from "./LoadingComponent";
 import { FilterComponent } from "./FilterComponenet";
-import { GRID_GAP, GRID_MARGINE } from "../constants";
+import { GRID_GAP, GRID_MARGINE_LEFT_RIGHT } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { GridItemComponent } from "./GridItemComponent";
 
@@ -15,7 +15,7 @@ const GridStyle = styled.section`
   align-self: center;
   align-items: center;
   gap: ${GRID_GAP}px;
-  margin: ${GRID_MARGINE}px;
+  margin: ${GRID_MARGINE_LEFT_RIGHT}px;
   background: ${props => props.theme.bg};
 `;
 

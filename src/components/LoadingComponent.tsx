@@ -10,7 +10,7 @@ const Wrapper = styled.section`
 
 const LoadingImage = styled.img``;
 
-//TODO: Loader should be centered
+//TODO: Loader should be centered https://webdeasy.de/en/css-loading-animations/
 export const LoadingSpinner = () => {
     return (
         <Wrapper>

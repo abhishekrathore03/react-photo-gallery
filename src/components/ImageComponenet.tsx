@@ -16,12 +16,10 @@ const ThumbnailStyle = styled(ImageStyle)`
   cursor: pointer;
   width: ${THUMB_WIDTH}px;
   height: ${THUMB_HEIGHT}px;
+  border-radius: 15px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 30px;
-  box-shadow: none;
-  &:hover {
-    transform: scale(1.07);
-    transition: transform 0.3s ease;
-  }
 `;
 export const ImageComponent: FC<{ src: string, alt: string }> = memo(({ src, alt }) => {
   const [imgSrc, setImgSrc] = useState<string>(`../Spinner.svg`);
@@ -39,6 +37,7 @@ export const ThumbnailComponent: FC<{ src: string, navigatePath: string, alt: st
   useEffect(() => {
     setImgSrc(src);
   }, [src]);
+  
   return <ThumbnailStyle src={imgSrc} onClick={() => navigate(navigatePath)} alt={alt} />
 });
 //TODO: https://wpdean.com/css-hover-effects/
