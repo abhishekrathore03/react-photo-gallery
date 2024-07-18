@@ -1,6 +1,6 @@
 {
-  "name": "my-photo-gallery",
-  "version": "0.1.0",
+  "name": "react-photo-gallery-app",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
@@ -43,9 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3"
   }
 }

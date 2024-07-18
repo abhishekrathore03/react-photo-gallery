@@ -1,13 +1,13 @@
-# Getting Started with Create React App
+# REACT-PHOTO-GALLERY_APP
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## TODO: 
+## Done: 
 - Display the photos in a grid format.
 - Each photo item should display:
       - Thumbnail
       - Title (truncate if too long for the display)
-- Implement pagination or infinite scrolling to load and display more photos as the user scrolls.
+- Implement pagination or infinite scrolling to load and display more photos as the user scrolls. (Both were implimented)
 - When a photo is clicked in the gallery, navigate to a detailed photo page.
 - This page should display:
     -   Full-sized photo
@@ -17,12 +17,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Add a search bar on the gallery page.
 - Allow users to search photos by title.
 - Display matching results in real-time as the user types.
-- USe Outlet??
-
-## Bonus:
 - Implement a "favorites" feature where users can mark photos as favorites. These favorites should persist across browser sessions.
 - Add a filter option to view photos by album ID.
-- Implement smooth transitions or animations when navigating between the gallery and details pages.
+
+## Tests:
+Tests were not added as was not part if the given requirement however it's best practice to add
 
 ## Available Scripts
 
