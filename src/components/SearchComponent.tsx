@@ -1,6 +1,7 @@
 import { RootState } from '../store';
 import styled from 'styled-components';
 import { imageData } from '../interfaces';
+import { SEARCH_HEIGHT } from '../constants';
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filteredData } from '../store/FilteredDataSlice';
@@ -8,8 +9,8 @@ import { filteredData } from '../store/FilteredDataSlice';
 // Container for the search box
 const SearchBoxContainer = styled.div`
   width: 350px;
-  padding: 3px;
   display: flex;
+  height: ${SEARCH_HEIGHT}px;
   background: ${props => props.theme.bgLight};
   border-radius:100px;
   justify-content:center;

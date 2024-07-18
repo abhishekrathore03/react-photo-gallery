@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { DOTS, GRID_GAP, GRID_MARGINE_LEFT_RIGHT, THUMB_CARD_HEIGHT, THUMB_CARD_WEIGHT } from "../constants";
+import { DOTS, GRID_GAP, GRID_MARGINE_LEFT_RIGHT, PAGINATION_HEIGHT, SEARCH_HEIGHT, THUMB_CARD_HEIGHT, THUMB_CARD_WEIGHT } from "../constants";
 
 const range = (start: number, end: number) => {
     let length = end - start + 1;
@@ -8,7 +8,7 @@ const range = (start: number, end: number) => {
 
 export const useImagesPerPage = () => {
     const calculateImagesPerPage = () => {
-        const height = ((window.innerHeight - (22.2 + 24)) * devicePixelRatio) / ((THUMB_CARD_HEIGHT + GRID_GAP) * devicePixelRatio);
+        const height = ((window.innerHeight - ((SEARCH_HEIGHT + PAGINATION_HEIGHT) / devicePixelRatio)) * devicePixelRatio) / ((THUMB_CARD_HEIGHT + GRID_GAP) * devicePixelRatio);
         const width = ((window.innerWidth - (GRID_MARGINE_LEFT_RIGHT * 2)) * devicePixelRatio) / ((THUMB_CARD_WEIGHT + GRID_GAP) * devicePixelRatio);
 
         return Math.floor(width) * Math.floor(height);

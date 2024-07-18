@@ -1,12 +1,12 @@
-import { DOTS } from "../constants";
 import styled from "styled-components"
 import { usePagination } from "../utils";
 import { PillComponent } from "./ButtonComponent";
+import { DOTS, PAGINATION_HEIGHT } from "../constants";
 import { Dispatch, FC, memo, MouseEvent, SetStateAction, useEffect, useState } from "react";
 
 const Wrapper = styled.section<{ $visibility?: boolean }>`
     width: 100%;
-    padding: 8px;
+    height: ${PAGINATION_HEIGHT}px;
     display: flex;
     max-width: 350px;
     margin: 10px auto;
