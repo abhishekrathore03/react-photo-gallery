@@ -10,12 +10,12 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/search",
+    path: "/scroll",
     element: <GridComponentScroll />,
     errorElement: <NotFound />,
   },
   {
-    path: "albums/:albumId",
+    path: "image/:imageId",
     async lazy() {
       let { AlbumComponent } = await import("../components/AlbumComponent");
       return { Component: AlbumComponent };

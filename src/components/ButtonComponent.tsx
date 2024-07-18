@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { FC, memo, MouseEvent, PropsWithChildren } from "react";
 
 const ButtonStyle = styled.div`
-  top: 20px;
-  left: 20px;
   width: 80px;
   color:white;
   display: flex;
   cursor: pointer;
-  position: absolute;
+  margin: auto 20px;
   align-items: center;
   border-radius: 20px;
   border: 1px solid #fff;
+  align-self: flex-start;
   background: transparent;
   padding: 1px 5px 1px 5px;
   justify-content: space-around;
@@ -66,7 +65,10 @@ const SvgStyle = styled.svg`
   filter: invert(100%);
 `;
 
-export const ButtonComponent: FC<PropsWithChildren> = ({ children }) => {
+/**
+ * Back Button for the Big Image page
+ */
+export const ButtonComponent: FC<PropsWithChildren> = () => {
   const navigate = useNavigate();
   return <ButtonStyle onClick={() => navigate(`/`)} >
     <SvgStyle width={10} height={10} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M32 15H3.41l8.29-8.29-1.41-1.42-10 10a1 1 0 0 0 0 1.41l10 10 1.41-1.41L3.41 17H32z" data-name="4-Arrow Left" /></SvgStyle>
@@ -74,6 +76,12 @@ export const ButtonComponent: FC<PropsWithChildren> = ({ children }) => {
   </ButtonStyle>
 }
 
+/**
+ * Pagination Button
+ * className: To set button enable, disable & Dots
+ * value: the value to be shown on button e.g. page number of dots
+ * onClick: click callback
+ */
 export const PillComponent: FC<{ className: string, value: number | string, onClick: (e: MouseEvent<HTMLButtonElement>) => void }> = memo(({ className, value, onClick }) => {
   return <PillStyle title={String(value)} className={className} onClick={onClick} id={String(value)}>{value}</PillStyle>
 })

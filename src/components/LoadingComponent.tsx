@@ -12,7 +12,7 @@ const LoadingImage = styled.img``;
 export const LoadingSpinner = () => {
     return (
         <Wrapper>
-            <LoadingImage src="Spinner.svg" alt="Loading ..." />
+            <LoadingImage src="spinner.svg" alt="Loading ..." />
         </Wrapper>
     )
 };

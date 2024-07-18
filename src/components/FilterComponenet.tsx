@@ -16,6 +16,9 @@ const Wrapper = styled.section`
     margin-bottom: 20px;
 `;
 
+/**
+ * This is the parent component for Filter related items e.g. Search and DropDown 
+ */
 export const FilterComponent: FC<{ albumIDs: number[], callback: Dispatch<SetStateAction<number>> }> = memo(({ albumIDs, callback }) => {
     return (
         <Wrapper>

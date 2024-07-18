@@ -14,15 +14,20 @@ const ImageStyle = styled.img`
 
 const ThumbnailStyle = styled(ImageStyle)`
   cursor: pointer;
+  border-radius: 15px;
   width: ${THUMB_WIDTH}px;
   height: ${THUMB_HEIGHT}px;
-  border-radius: 15px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
-  // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 30px;
 `;
+
+/**
+ * Component responsible to show the Big image
+ * Initial image is assigned as a loading image
+ * the URL is replaced with actual src inside useEffect to show a loader while the image get's loaded
+ */
 export const ImageComponent: FC<{ src: string, alt: string }> = memo(({ src, alt }) => {
-  const [imgSrc, setImgSrc] = useState<string>(`../Spinner.svg`);
+  const [imgSrc, setImgSrc] = useState<string>(`../spinner.svg`);
 
   useEffect(() => {
     setImgSrc(src);
@@ -30,14 +35,20 @@ export const ImageComponent: FC<{ src: string, alt: string }> = memo(({ src, alt
   return <ImageStyle src={imgSrc} alt={alt} />
 });
 
+/**
+ * Component responsible to show the Thumbnail image
+ * Initial image is assigned as a loading image
+ * the URL is replaced with actual src inside useEffect to show a loader while the image get's loaded
+ * 
+ * Navigates to Big image on click of thumbnail
+ */
 export const ThumbnailComponent: FC<{ src: string, navigatePath: string, alt: string }> = memo(({ src, navigatePath, alt }) => {
   const navigate = useNavigate();
 
-  const [imgSrc, setImgSrc] = useState<string>(`Spinner.svg`);
+  const [imgSrc, setImgSrc] = useState<string>(`spinner.svg`);
   useEffect(() => {
     setImgSrc(src);
   }, [src]);
   
   return <ThumbnailStyle src={imgSrc} onClick={() => navigate(navigatePath)} alt={alt} />
 });
-//TODO: https://wpdean.com/css-hover-effects/

@@ -18,10 +18,4 @@ const TextStyle = styled.p<TextComponentProps>`
   font-family: Quicksand, sans-serif;
 `;
 
-
-// TODO: Extend the styled-component
-export const TruncatedText: FC<TextComponentProps> = ({ children }) => <TextStyle>{children}</TextStyle>
-
-export const TextComponent: FC<TextComponentProps> = ({ children }) => (
-  <TextStyle >{children}</TextStyle>
-);
+export const TextComponent: FC<TextComponentProps> = ({ children }) => <TextStyle>{children}</TextStyle>;

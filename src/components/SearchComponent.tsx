@@ -10,7 +10,7 @@ const SearchBoxContainer = styled.div`
   width: 350px;
   padding: 3px;
   display: flex;
-  background: #333;
+  background: ${props => props.theme.bgLight};
   border-radius:100px;
   justify-content:center;
   &:hover {
@@ -40,6 +40,12 @@ const SearchSVG = styled.svg`
   padding-left: 5px;
 `;
 
+/**
+ * The search bar of application
+ * Uses SVG for search icon
+ * 
+ * Rerives the orignal data from store and sets the filtered data in store
+ */
 export const SearchComponent: FC = () => {
   const [query, setQuery] = useState<string>('');
   const dispatch = useDispatch();

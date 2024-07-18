@@ -11,16 +11,17 @@ import { ButtonComponent } from "./ButtonComponent";
 import { useDispatch, useSelector } from "react-redux";
 
 const Wrapper = styled.section`
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 `;
 
-
 const Album: FC<{ imgData: imageData, albumId: number }> = memo(({ imgData, albumId }) => {
     return (
         <Wrapper>
+            <ButtonComponent key={`${albumId}-btn`}>BACK</ButtonComponent>
             <ImageComponent key={`${albumId}-image`} src={imgData.url} alt={`${albumId}-image`} />
             <TextComponent key={`${albumId}-Title`}>
                 <span><b>Title: </b></span>
@@ -30,20 +31,25 @@ const Album: FC<{ imgData: imageData, albumId: number }> = memo(({ imgData, albu
                 <span><b>Album ID: </b></span>
                 <span>{`${imgData.albumId}`}</span>
             </ TextComponent>
-            <ButtonComponent key={`${albumId}-btn`}>BACK</ButtonComponent>
         </Wrapper>
     );
 });
 
+/**
+ * Component to show the big image.
+ * Retrives the image by id from the data stored in Redux store
+ * 
+ * In case of image not available then returns Not Found Page
+ */
 export const AlbumComponent: FC = () => {
     const dispatch = useDispatch();
-    const { albumId } = useParams();
+    const { imageId } = useParams();
     const arrImgData: imageData[] = useSelector((state: RootState) => state.albumData.data);
-    const imgData: imageData = arrImgData && arrImgData[Number(albumId) - 1];
+    const imgData: imageData = arrImgData && arrImgData[Number(imageId) - 1];
 
     useEffect(() => {
         arrImgData.length === 0 && getData(dispatch); //Retrive the data if the page was refreshed
-    }, [albumId, dispatch, arrImgData]);
+    }, [imageId, dispatch, arrImgData]);
 
-    return imgData ? <Album imgData={imgData} albumId={Number(albumId)} /> : <NotFound />
+    return imgData ? <Album imgData={imgData} albumId={Number(imageId)} /> : <NotFound />
 }
