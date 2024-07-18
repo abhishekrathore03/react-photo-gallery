@@ -1,8 +1,8 @@
 import type { FC } from "react";
 import styled from "styled-components";
-import { TextComponentProps } from "../interfaces";
+import { ITextComponentProps } from "../../interfaces";
 
-const TextStyle = styled.p<TextComponentProps>`
+const TextStyle = styled.p<ITextComponentProps>`
   width: 90%;
   flex-grow: 1;
   padding: 6px;
@@ -18,4 +18,4 @@ const TextStyle = styled.p<TextComponentProps>`
   font-family: Quicksand, sans-serif;
 `;
 
-export const TextComponent: FC<TextComponentProps> = ({ children }) => <TextStyle>{children}</TextStyle>;
+export const TextComponent: FC<ITextComponentProps> = ({ children }) => <TextStyle>{children}</TextStyle>;

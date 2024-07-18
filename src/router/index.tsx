@@ -1,7 +1,7 @@
-import { NotFound } from "../components/NotFound";
 import { createBrowserRouter } from "react-router-dom"
-import { GridComponent } from "../components/GridComponent";
-import { GridComponentScroll } from "../components/GridComponentScroll";
+import { NotFound } from "../components/common/NotFound";
+import { GridComponent } from "../components/grid/GridComponent";
+import { GridComponentScroll } from "../components/grid/GridComponentScroll";
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
   {
     path: "image/:imageId",
     async lazy() {
-      let { AlbumComponent } = await import("../components/AlbumComponent");
+      let { AlbumComponent } = await import("../components/album/AlbumComponent");
       return { Component: AlbumComponent };
     },
   },

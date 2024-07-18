@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { IFavComponentProps } from "../../interfaces";
 import { FC, memo, useEffect, useState } from "react";
-import { retriveFromStorage, setInStorage } from "../utils";
+import { retriveFromStorage, setInStorage } from "../../utils";
 
 const FavoriteStyle = styled.img<{ $visibility?: boolean }>`
     top: 8px;
@@ -21,7 +22,7 @@ const getIsSelected = (id: number) => retriveFromStorage(String(id));
  * 
  * User can click on Star icon to mark is fav or click again to remove from fav
  */
-export const FavoriteComponenet: FC<{ id: number, show: boolean }> = memo(({ id, show }) => {
+export const FavoriteComponenet: FC<IFavComponentProps> = memo(({ id, show }) => {
     const [isSelected, setIsSelected] = useState<boolean>(getIsSelected(id));
 
     const handeller = (e: any) => {

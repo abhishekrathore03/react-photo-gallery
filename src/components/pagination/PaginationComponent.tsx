@@ -1,8 +1,9 @@
 import styled from "styled-components"
-import { usePagination } from "../utils";
-import { PillComponent } from "./ButtonComponent";
-import { DOTS, PAGINATION_HEIGHT } from "../constants";
-import { Dispatch, FC, memo, MouseEvent, SetStateAction, useEffect, useState } from "react";
+import { usePagination } from "../../utils";
+import { IPaginationComponent } from "../../interfaces";
+import { DOTS, PAGINATION_HEIGHT } from "../../constants";
+import { PillComponent } from "../common/ButtonComponent";
+import { FC, memo, MouseEvent, useEffect, useState } from "react";
 
 const Wrapper = styled.section<{ $visibility?: boolean }>`
     width: 100%;
@@ -23,7 +24,7 @@ const Wrapper = styled.section<{ $visibility?: boolean }>`
  * Handeles the click events on the pagination buttons
  * Sets buttons selected, enable, disable etc. as per the need
  */
-export const PaginationComponent: FC<{ totalImages: number, imagesPerPage: number, currentPage: Dispatch<SetStateAction<{ start: number; end: number; }>> }> = memo(({ totalImages, imagesPerPage, currentPage }) => {
+export const PaginationComponent: FC<IPaginationComponent> = memo(({ totalImages, imagesPerPage, currentPage }) => {
     const [selectedPage, setSelectedPage] = useState<number>(1);
     const paginationRange = usePagination(totalImages, imagesPerPage, 1, selectedPage);
 

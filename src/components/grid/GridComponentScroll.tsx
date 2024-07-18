@@ -1,14 +1,14 @@
-import { RootState } from "../store";
+import { RootState } from "../../store";
 import styled from "styled-components";
-import { getData } from "../communicator";
-import { imageData } from "../interfaces";
+import { getData } from "../../communicator";
+import { imageData } from "../../interfaces";
+import { useImagesPerPage } from "../../utils";
 import { FC, useEffect, useState } from "react";
-import { LoadingSpinner } from "./LoadingComponent";
-import { FilterComponent } from "./FilterComponenet";
-import { GRID_GAP, GRID_MARGINE_LEFT_RIGHT, GRID_MARGINE_TOP_BOTTOM, THUMB_CARD_HEIGHT } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { GridItemComponent } from "./GridItemComponent";
-import { useImagesPerPage } from "../utils";
+import { LoadingSpinner } from "../common/LoadingComponent";
+import { FilterComponent } from "../filters/FilterComponenet";
+import { GRID_GAP, GRID_MARGINE_LEFT_RIGHT, GRID_MARGINE_TOP_BOTTOM, THUMB_CARD_HEIGHT } from "../../constants";
 
 const GridStyle = styled.section`
     gap: ${GRID_GAP}px;

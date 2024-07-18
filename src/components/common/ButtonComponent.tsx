@@ -1,6 +1,8 @@
+import { memo } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { FC, memo, MouseEvent, PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
+import type { IPillComponentProps } from "../../interfaces";
 
 const ButtonStyle = styled.div`
   width: 80px;
@@ -82,6 +84,6 @@ export const ButtonComponent: FC<PropsWithChildren> = () => {
  * value: the value to be shown on button e.g. page number of dots
  * onClick: click callback
  */
-export const PillComponent: FC<{ className: string, value: number | string, onClick: (e: MouseEvent<HTMLButtonElement>) => void }> = memo(({ className, value, onClick }) => {
+export const PillComponent: FC<IPillComponentProps> = memo(({ className, value, onClick }) => {
   return <PillStyle title={String(value)} className={className} onClick={onClick} id={String(value)}>{value}</PillStyle>
 })

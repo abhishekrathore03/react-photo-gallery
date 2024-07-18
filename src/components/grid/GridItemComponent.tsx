@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { imageData } from "../interfaces";
+import { imageData } from "../../interfaces";
 import { FC, memo, useState } from "react";
-import { TextComponent } from "./TextComponent";
-import { ThumbnailComponent } from "./ImageComponenet";
-import { FavoriteComponenet } from "./FavoriteComponent";
-import { THUMB_CARD_HEIGHT, THUMB_CARD_WEIGHT } from "../constants";
+import { TextComponent } from "../common/TextComponent";
+import { FavoriteComponenet } from "../fav/FavoriteComponent";
+import { ThumbnailComponent } from "../common/ImageComponenet";
+import { THUMB_CARD_HEIGHT, THUMB_CARD_WEIGHT } from "../../constants";
 
 const Wrapper = styled.section`
     display: flex;

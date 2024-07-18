@@ -1,7 +1,8 @@
+import { FC, memo } from "react";
 import styled from "styled-components";
+import { IDropDownProps } from "../../interfaces";
 import { SearchComponent } from "./SearchComponent";
 import { DropDownComponenet } from "./DropDownComponent";
-import { Dispatch, FC, memo, SetStateAction } from "react";
 
 const Wrapper = styled.section`
     gap: 50px;
@@ -19,7 +20,7 @@ const Wrapper = styled.section`
 /**
  * This is the parent component for Filter related items e.g. Search and DropDown 
  */
-export const FilterComponent: FC<{ albumIDs: number[], callback: Dispatch<SetStateAction<number>> }> = memo(({ albumIDs, callback }) => {
+export const FilterComponent: FC<IDropDownProps> = memo(({ albumIDs, callback }) => {
     return (
         <Wrapper>
             <DropDownComponenet albumIDs={albumIDs} callback={callback} />

@@ -1,5 +1,6 @@
+import { FC, memo } from "react";
 import styled from "styled-components";
-import { Dispatch, FC, memo, SetStateAction } from "react";
+import { IDropDownProps } from "../../interfaces";
 
 const SelectComponent = styled.select`
     color:#CCC;
@@ -22,7 +23,7 @@ const OptionComponent = styled.option``;
  * 
  * On selection of any album the componenet sends the selected values back to parent component using props
  */
-export const DropDownComponenet: FC<{ albumIDs: number[], callback: Dispatch<SetStateAction<number>> }> = memo(({ albumIDs, callback }) => {
+export const DropDownComponenet: FC<IDropDownProps> = memo(({ albumIDs, callback }) => {
     return (
         <SelectComponent onChange={(val: any) => callback(parseInt(val.target.value))} title="AlbumID" >
             <OptionComponent key={`title-option`} value={-1}>Album ID</ OptionComponent>
