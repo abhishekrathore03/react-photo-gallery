@@ -7,10 +7,8 @@ const Wrapper = styled.section`
     flex-direction: column;
     justify-content: center;
 `;
-
 const LoadingImage = styled.img``;
 
-//TODO: Loader should be centered https://webdeasy.de/en/css-loading-animations/
 export const LoadingSpinner = () => {
     return (
         <Wrapper>

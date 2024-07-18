@@ -82,3 +82,14 @@ export const usePagination = (totalCount: number, pageSize: number, siblingCount
 
     return paginationRange;
 };
+
+export const retriveFromStorage = (id: string): boolean => {
+    const data = localStorage.getItem(id);
+    return data === 'false' || data === null ? false : true;
+}
+
+export const setInStorage = (id: string) => {
+    const storedData = retriveFromStorage(id);
+    const value = storedData ? !(Boolean(storedData)) : true;
+    localStorage.setItem(id, String(value));
+}
